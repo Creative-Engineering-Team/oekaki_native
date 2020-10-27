@@ -71,7 +71,7 @@ class RoomMake(
 class RoomMakeItem(val roommake: RoomMake): Item<ViewHolder>(){
     override fun bind(viewHolder: ViewHolder, position: Int) {
         viewHolder.itemView.make_item_room_name.text = roommake.room_name
-        val name = "作成者"+ roommake.user_name
+        val name = "作成者："+ roommake.user_name
         viewHolder.itemView.make_item_user_name.text = name
         Picasso.get().load(roommake.user_image).into(viewHolder.itemView.make_item_image)
     }
