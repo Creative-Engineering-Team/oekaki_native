@@ -6,7 +6,6 @@ import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import com.example.chatkotlin.R
-import com.example.chatkotlin.Room.RoomChoiceActivity
 import com.example.chatkotlin.Room.RoomSelectActivity
 import com.example.chatkotlin.data.UserDB
 import kotlinx.android.synthetic.main.activity_startpage.*

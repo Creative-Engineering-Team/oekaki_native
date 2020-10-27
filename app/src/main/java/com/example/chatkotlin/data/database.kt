@@ -46,6 +46,7 @@ class UserDB(context: Context){
             val cursor = database.rawQuery(sql, null)
             cursor.moveToFirst()
             cursor.getString(cursor.getColumnIndex("name"))
+            database.close()
         }catch (exception: Exception) {
             //データがない場合の初期の処理
             val dbHelper = UserDBHelper(context, dbName, null, dbVersion)
@@ -72,6 +73,7 @@ class UserDB(context: Context){
 
 //            Log.d("database","データを新たに作成しました")
             database.insertOrThrow(tableName, null, values)
+            database.close()
         }
     }
 
@@ -95,6 +97,7 @@ class UserDB(context: Context){
         val sql = "select * from " + tableName + " where id = 1"
         val cursor = database.rawQuery(sql, null)
         cursor.moveToFirst()
+        database.close()
         return cursor.getString(cursor.getColumnIndex("name"))
     }
     fun getuser_id() :String{
@@ -103,6 +106,7 @@ class UserDB(context: Context){
         val sql = "select * from " + tableName + " where id = 1"
         val cursor = database.rawQuery(sql, null)
         cursor.moveToFirst()
+        database.close()
         return cursor.getString(cursor.getColumnIndex("user_id"))
     }
     fun getuser_image_url() :String{
@@ -111,6 +115,7 @@ class UserDB(context: Context){
         val sql = "select * from " + tableName + " where id = 1"
         val cursor = database.rawQuery(sql, null)
         cursor.moveToFirst()
+        database.close()
         return cursor.getString(cursor.getColumnIndex("image_url"))
     }
     fun getUserImage() :Bitmap{
@@ -120,6 +125,7 @@ class UserDB(context: Context){
         val cursor = database.rawQuery(sql, null)
         cursor.moveToFirst()
         val blob: ByteArray = cursor.getBlob(cursor.getColumnIndex("image"))
+        database.close()
         return BitmapFactory.decodeByteArray(blob, 0, blob.size)
     }
 
@@ -146,6 +152,7 @@ class UserDB(context: Context){
         val whereClauses = "id = ?"
         val whereArgs = arrayOf("1")
         database.update(tableName, values, whereClauses, whereArgs)
+        database.close()
     }
     fun updateUserImageUrl(newUrl: String){
         val dbHelper = UserDBHelper(context, dbName, null, dbVersion)

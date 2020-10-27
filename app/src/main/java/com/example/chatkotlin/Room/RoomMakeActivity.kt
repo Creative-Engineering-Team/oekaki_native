@@ -48,7 +48,7 @@ class RoomMakeActivity : AppCompatActivity() {
         }
         //戻る
         room_make_return.setOnClickListener {
-            val intent = Intent(this, RoomChoiceActivity::class.java)
+            val intent = Intent(this, RoomSelectActivity::class.java)
             startActivity(intent)
         }
 
